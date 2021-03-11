@@ -22,12 +22,12 @@ class Com{
       x=xt; y=yt; w=wt; h=ht;
       dh=h/3;
       // line 1
-      title= new TextBox("Configurar Serial",CENTER,x,y,int(0.7*w),dh);
+      title= new TextBox("Serial konfugieren",CENTER,x,y,int(0.7*w),dh);
       refresh=new TextBox("refresh",CENTER,int(x+0.7*w),y,int(0.3*w),dh);
       //line 2
-      selectSerial=new TextBox("select serial",CENTER,x,y+h/3,w,dh);
+      selectSerial=new TextBox("Serial auswählen",CENTER,x,y+h/3,w,dh);
       //line 3
-      selectSpeed=new TextBox("select speed",CENTER,x,y+2*h/3,int(0.4*w),dh);
+      selectSpeed=new TextBox("Baud. setzen",CENTER,x,y+2*h/3,int(0.4*w),dh);
       versionArduino=new TextBox("",CENTER,int(x+0.4*w),int(y+2*h/3),int(0.4*w),dh);
       onOff=new TextBox("off",CENTER,int(x+0.8*w),y+2*h/3,int(0.2*w),dh);
       //onOff=new TextBox("off",CENTER,int(x+0.7*w),y,int(0.3*w),dh);

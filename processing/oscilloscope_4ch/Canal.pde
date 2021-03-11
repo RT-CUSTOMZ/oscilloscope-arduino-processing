@@ -56,8 +56,8 @@ class Canal{
      ft=new Dial(escLog,altMove,!nInt,fmt,"","s/div",10e-3f,20e-6f,20f,x+10,fm.y+fm.h+3,w-20,20,2);
      p0=tela.y+3*Q*(n+1);//posição da tensão zero
      p0Trigger=p0;
-     medir=new CheckBox("medir",ft.x,ft.y+ft.h+5,15);
-     curva=new CheckBox("curva",ft.x+ft.w/2,ft.y+ft.h+5,15);
+     medir=new CheckBox("Messen",ft.x,ft.y+ft.h+5,15);
+     curva=new CheckBox("Kurve",ft.x+ft.w/2+10,ft.y+ft.h+5,15);
  }
   
   void display(){

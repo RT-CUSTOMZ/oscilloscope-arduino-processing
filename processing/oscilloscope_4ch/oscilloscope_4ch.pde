@@ -131,8 +131,8 @@ void setup() {
       grupo[k]=new Grupo(); 
    }
 
-  resetEixos=new Botao("eixos",marg1+50,tela.y,45,20);
-  resetMedir=new Botao("medir",resetEixos.x+resetEixos.w+2,tela.y,45,20);
+  resetEixos=new Botao("Achsen",marg1+50,tela.y,50,20);
+  resetMedir=new Botao("Messung",resetEixos.x+resetEixos.w+2,tela.y,60,20);
 
   //demo & canais
   for (byte k=0; k<4; k++) {
@@ -149,36 +149,36 @@ void setup() {
   chXYZ=new CanalXYZ(color(255,0,255),marg1,canal[3].y+canal[3].h+10,143,80);
   chXYZ.verCanais.clicado=true;
   
-  verPontos=new CheckBox("ver pontos", chXYZ.x, chXYZ.y+chXYZ.h+5, 15);
-  calcFreq=new CheckBox("detectar freq.", verPontos.x, verPontos.y+verPontos.h+5, 15);
-  grafDif=new CheckBox("ver",calcFreq.x+calcFreq.w,calcFreq.y,15);
+  verPontos=new CheckBox("siehe Punkte", chXYZ.x, chXYZ.y+chXYZ.h+5, 15);
+  calcFreq=new CheckBox("Freq. erkennen", verPontos.x, verPontos.y+verPontos.h+5, 15);
+  grafDif=new CheckBox("Freq. zeigen",calcFreq.x,calcFreq.y+calcFreq.h+5,15);
   //ruido=new Dial(escLinear, altMove, !nInt, fmt, "ruido", "V", 0, 0, 2, calcFreq.x+20, calcFreq.y+17, 100, 20);
 
   // 08-jun-2017 - button to save data  in data.txt
-  save=new Botao("salvar datax.txt",calcFreq.x,calcFreq.y+calcFreq.h+5,150,20);
+  save=new Botao("speichere Daten.txt",grafDif.x,grafDif.y+grafDif.h+5,150,20);
 
 
   //medidor de resistor/capacitor
   pnlRC=new Painel("", tela.x, tela.y+tela.h+10, 125, 40);
-  RC=new CheckBox("medir res./cap.", pnlRC.x, pnlRC.y, 15);
+  RC=new CheckBox("messen \nWid./Kap.", pnlRC.x, pnlRC.y+10, 15);
 
-  //Gerador de Sinais - agora só gera onda quadrada, depois vai gerar triangulo, denteDeSerra, e senidal
+  //Gerador de Sinais - agora s\u00f3 gera onda quadrada, depois vai gerar triangulo, denteDeSerra, e senidal
   pnlSinal=new Painel("", pnlRC.x+pnlRC.w+10, pnlRC.y, 100, 85);
-  sinal=new CheckBox("Ger.Sinal", pnlSinal.x, pnlSinal.y, 15);
+  sinal=new CheckBox("Generator", pnlSinal.x, pnlSinal.y, 15);
   fSinal=new Dial(escLog, altSolta, !nInt, fmt, "f", "Hz", 50f, 125e-3f, 10e3f, pnlSinal.x+5, sinal.y+sinal.h+2, pnlSinal.w-10, 20);
   tSinal=new Dial(escLog, altSolta, !nInt, fmt, "T", "s", 20e-3f, 100e-6f, 8f, fSinal.x, fSinal.y+fSinal.h+2, fSinal.w, fSinal.h);
   tonSinal=new Dial(escLinear, altSolta, nInt, !fmt, "Ton", "%", 25f, 0f, 100f, tSinal.x, tSinal.y+tSinal.h+2, tSinal.w, tSinal.h);
 
   // posicionamento da Amostragem 
-  pnlAmostra=new Painel("Amostragem", pnlSinal.x+pnlSinal.w+10, pnlSinal.y, 200, 85);
+  pnlAmostra=new Painel("Tastrate", pnlSinal.x+pnlSinal.w+10, pnlSinal.y, 200, 85);
   dt=new Dial(escLog, altSolta, nInt, fmt, "dt", "s", 1e-3f, 10e-6f, 2f, pnlAmostra.x+5, pnlAmostra.y+20, 100, 20);
   dtReal=new FmtNum(0,nInt,fmt);
   q=new Dial(escLinear, altSolta, nInt, !fmt, "q", "", 100, 1, 100, dt.x+dt.w+5, dt.y, 60, 20);
   tTotal=new FmtNum(dt.v.getV()*q.v.getV(), !nInt);
   tTotalReal=new FmtNum(0,!nInt);
-  umaAmostra=new Botao("uma", dt.x, dt.y+dt.h+5, 50, 20);
-  variasAmostras=new Botao("varias", umaAmostra.x+umaAmostra.w+5, umaAmostra.y, umaAmostra.w, umaAmostra.h);
-  fluxoContinuo=new Botao("fluxo", variasAmostras.x+variasAmostras.w+5, variasAmostras.y, variasAmostras.w, variasAmostras.h);
+  umaAmostra=new Botao("einer", dt.x, dt.y+dt.h+5, 50, 20);
+  variasAmostras=new Botao("mehrere", umaAmostra.x+umaAmostra.w+5, umaAmostra.y, umaAmostra.w+10, umaAmostra.h);
+  fluxoContinuo=new Botao("fließend", variasAmostras.x+variasAmostras.w+5, variasAmostras.y, variasAmostras.w, variasAmostras.h);
   
 
 
@@ -405,7 +405,7 @@ void mouseClicked() {
   
     } 
     catch(Exception e) {
-      println("erro abrindo Serial:", e);
+      println("fehler beim öffnen der seriellen Schnittstelle:", e);
       com.conectado=false;
       com.erro=true;
     }
@@ -589,7 +589,7 @@ void mouseClicked() {
             String fileName ="dataf"+nf(year(),4)+nf(month(),2)+nf(day(),2)+nf(hour(),2)+nf(minute(),2)+nf(second(),2)+".txt";
             output=createWriter(fileName);
             outputOpen=true;
-            save.tex="salvando";
+            save.tex="speichern";
             // cabeçalho
             //output.println("BegOscopio v"+versao+" "+nf(year())+"-"+nf(month())+"-"+nf(day())+" "+nf(hour())+":"+nf(minute())+":"+nf(second()));
             output.print("dt(");output.print(dt.v.printV());output.print(dt.unidade);output.print(")");
@@ -608,7 +608,7 @@ void mouseClicked() {
             outputOpen=false;
             qSave=1;
             if (qSave>10) {qSave=1;}
-            save.tex="salvar datax.txt" + "-"+qSave;
+            save.tex="speicher datax.txt" + "-"+qSave;
             save.clicado=false;
           }
         } else {
@@ -743,14 +743,14 @@ void mouseClicked() {
   
   if (fSinal.mouseClicado()){
     tSinal.setV(1/fSinal.v.v);
-    enviarCmd("tSinal");
+    enviarCmd("tSignal");
   }
   if (tSinal.mouseClicado()){
      fSinal.setV(1/tSinal.v.v);
-     enviarCmd("tSinal");
+     enviarCmd("tSignal");
   }
   if (tonSinal.mouseClicado()){
-    enviarCmd("tonSinal");
+    enviarCmd("tonSignal");
   }
 }
 
@@ -848,14 +848,14 @@ void mouseReleased() {
 
   if (fSinal.mouseSoltou()) {
     tSinal.setV(1/fSinal.v.v);
-    enviarCmd("tSinal");
+    enviarCmd("tSignal");
   }
   if (tSinal.mouseSoltou()) {
     fSinal.setV(1/tSinal.v.v);
-    enviarCmd("tSinal");
+    enviarCmd("tSignal");
   }
   if (tonSinal.mouseSoltou()){
-    enviarCmd("tonSinal");
+    enviarCmd("tonSignal");
   }
   
   
@@ -930,7 +930,7 @@ void fecharDados(){
       output.close();  
       outputOpen=false;
       if (qSave>10) {qSave=1;}
-      save.tex="salvar datax.txt" + "-"+qSave;
+      save.tex="speicher datax.txt" + "-"+qSave;
       save.clicado=false;
 }
 
@@ -941,12 +941,12 @@ void fecharDados(){
 
 //=== Ger.Sinal - Se alterou f/T/Ton - enviar comando para Arduino ==
 void enviarCmd(String cmd){
-  if (cmd.equals("tSinal")){
+  if (cmd.equals("tSignal")){
     if (com.conectado){
          port.write("p"+tSinal.v.printV());
          println("p"+tSinal.v.printV());
      }
-  } else if (cmd.equals("tonSinal")){
+  } else if (cmd.equals("tonSignal")){
     if (com.conectado){
          port.write("o"+tonSinal.v.printV()+"%");
          println("o"+tonSinal.v.printV()+"%");
@@ -1005,8 +1005,8 @@ void serialEvent(Serial p) {
         enviarQ();
         
         // send command to Arduino -> start Signal Gennerator 60Hz tOn25%
-        enviarCmd("tSinal");
-        enviarCmd("tonSinal");
+        enviarCmd("tSignal");
+        enviarCmd("tonSignal");
         sinal.clicado=true;
         port.write("so");
         
@@ -1019,8 +1019,8 @@ void serialEvent(Serial p) {
        // } else {
        //   port.write("vx");
        // }
-        println("Abri Serial");
-        println("variasAmostra.clicado=",variasAmostras.clicado);
+        println("Öffne Serial");
+        println("mehrereBeispiel.clicado=",variasAmostras.clicado);
         
       } else if (cmd.equals("f")) { // entra fluxo de dados - deslocar dados e armazenar no final
         String tex2[]=splitTokens(val); //val = "0(t)dtReal(t)ch0(t)ch1(t)ch2"
@@ -1051,7 +1051,7 @@ void serialEvent(Serial p) {
             }
             output.println();
             if (qSave % 100==0) { // de 100 em 100
-              save.tex="salvando "+nf(qSave);
+              save.tex="speichern "+nf(qSave);
               output.flush();
             }
           //}

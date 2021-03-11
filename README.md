@@ -2,6 +2,8 @@
 
 ### Description
 
+Ins Deutsche Übersetzt
+
 Sampling oscilloscope with 4 channels (voltages from 0 to 5V), with frequencies up to 3kHz.
 
 It has a PWM signal generator and a square wave output.

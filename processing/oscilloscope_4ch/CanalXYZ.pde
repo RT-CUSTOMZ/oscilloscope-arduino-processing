@@ -29,8 +29,8 @@ class CanalXYZ{
      XYZ.clicado=false;
      fm=new Dial(escLog,altMove,!nInt,fmt,"","v/div",2f,100e-3f,20f,x+10,selXYZ[0].y+selXYZ[0].h+5,w-20,20);
      p0=tela.y+12*Q;//posição da tensão zero
-     curvaSuave=new CheckBox("curva suave",fm.x,fm.y+fm.h+5,15);
-     verCanais=new CheckBox("ver canais",curvaSuave.x,curvaSuave.y+curvaSuave.h+2,15);
+     curvaSuave=new CheckBox("Kurve glätten",fm.x,fm.y+fm.h+5,15);
+     verCanais=new CheckBox("Kanäle anzeigen",curvaSuave.x,curvaSuave.y+curvaSuave.h+2,15);
     
   }
   
