@@ -1,8 +1,8 @@
 # Oscilloscope using Arduino and Processing
 
-### Description
-
 Ins Deutsche Übersetzt
+
+### Description
 
 Sampling oscilloscope with 4 channels (voltages from 0 to 5V), with frequencies up to 3kHz.
 
