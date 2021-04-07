@@ -170,13 +170,13 @@ void setup() {
   tonSinal=new Dial(escLinear, altSolta, nInt, !fmt, "Ton", "%", 25f, 0f, 100f, tSinal.x, tSinal.y+tSinal.h+2, tSinal.w, tSinal.h);
 
   // posicionamento da Amostragem 
-  pnlAmostra=new Painel("Tastrate", pnlSinal.x+pnlSinal.w+10, pnlSinal.y, 200, 85);
+  pnlAmostra=new Painel("Abtastung", pnlSinal.x+pnlSinal.w+10, pnlSinal.y, 200, 85);
   dt=new Dial(escLog, altSolta, nInt, fmt, "dt", "s", 1e-3f, 10e-6f, 2f, pnlAmostra.x+5, pnlAmostra.y+20, 100, 20);
   dtReal=new FmtNum(0,nInt,fmt);
   q=new Dial(escLinear, altSolta, nInt, !fmt, "q", "", 100, 1, 100, dt.x+dt.w+5, dt.y, 60, 20);
   tTotal=new FmtNum(dt.v.getV()*q.v.getV(), !nInt);
   tTotalReal=new FmtNum(0,!nInt);
-  umaAmostra=new Botao("einer", dt.x, dt.y+dt.h+5, 50, 20);
+  umaAmostra=new Botao("einmal", dt.x, dt.y+dt.h+5, 50, 20);
   variasAmostras=new Botao("mehrere", umaAmostra.x+umaAmostra.w+5, umaAmostra.y, umaAmostra.w+10, umaAmostra.h);
   fluxoContinuo=new Botao("fließend", variasAmostras.x+variasAmostras.w+5, variasAmostras.y, variasAmostras.w, variasAmostras.h);
   
